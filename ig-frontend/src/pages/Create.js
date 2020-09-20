@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import { UserContext } from "../context/UserContext.js";
 
 export default () => {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
+
+  const { user } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +30,9 @@ export default () => {
     try {
       await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${user.jwt}`,
+        },
         body: formData,
       });
     } catch (err) {

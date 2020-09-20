@@ -8,9 +8,7 @@ export default ({ match, history }) => {
   const [post, setPost] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const { user, setUser } = useContext(UserContext);
-
-  console.log(user);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const getPost = async (postId) => {
@@ -36,6 +34,9 @@ export default ({ match, history }) => {
       `${process.env.REACT_APP_API_URL}/posts/${id}`,
       {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.jwt}`,
+        },
       }
     );
 
