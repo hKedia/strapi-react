@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import Post from "../components/Post.js";
+import { UserContext } from "../context/UserContext.js";
 
 export default ({ match, history }) => {
   const { id } = match.params;
   const [post, setPost] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { user, setUser } = useContext(UserContext);
+
+  console.log(user);
 
   useEffect(() => {
     const getPost = async (postId) => {
