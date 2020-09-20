@@ -6,6 +6,7 @@ import Create from "./pages/Create.js";
 import Nav from "./components/Nav.js";
 import SinglePost from "./pages/SinglePost.js";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/create" exact component={Create} />
           <Route path="/login" exact component={Login} />
+          <Route path="/register" exact component={Register} />
           <Route path="/:id" component={SinglePost} />
         </Switch>
       </BrowserRouter>

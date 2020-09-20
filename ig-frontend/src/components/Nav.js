@@ -17,9 +17,14 @@ export default () => {
         </NavLink>
       )}
       {!user && (
-        <NavLink to="/login" exact className="nav__link">
-          Login
-        </NavLink>
+        <>
+          <NavLink to="/login" exact className="nav__link">
+            Login
+          </NavLink>
+          <NavLink to="/register" exact className="nav__link">
+            Register
+          </NavLink>
+        </>
       )}
     </div>
   );
